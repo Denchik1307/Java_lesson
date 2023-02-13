@@ -39,7 +39,6 @@ abstract class MyCalc {
         }
         catch (Exception e){
             System.out.println(e.getMessage());
-            return -1f;
         }
 
         return res;
