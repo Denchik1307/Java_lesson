@@ -57,7 +57,7 @@ abstract class MyCalc {
                 System.out.println(i);
             }
         }
-        }
+    }
 
 
     public static boolean isSimple(int num) {
