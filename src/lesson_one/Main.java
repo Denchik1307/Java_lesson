@@ -6,11 +6,16 @@ public class Main {
 
     public static void main(String[] args) {
         System.out.println(MyCalc.factorial(4));
+
         System.out.println(MyCalc.triangleDigit(9));
-        System.out.println(MyCalc.calc(9, 5,"+"));
-        System.out.println(MyCalc.calc(9, 5,"-"));
-        System.out.println(MyCalc.calc(9, 0,"/"));
-        System.out.println(MyCalc.calc(9, 5,"*"));
+
+        System.out.println(MyCalc.calc(9, 5, "+"));
+        System.out.println(MyCalc.calc(9, 5, "-"));
+        System.out.println(MyCalc.calc(9, 0, "/"));
+        System.out.println(MyCalc.calc(9, 5, "*"));
+
+        MyCalc.showSimpleDigit(600);
+
     }
 }
 
@@ -36,12 +41,32 @@ abstract class MyCalc {
             if (Objects.equals(sign, minus)) res = num1 - num2;
             if (Objects.equals(sign, multiple)) res = num1 * num2;
             if (Objects.equals(sign, delimiter)) res = num1 / num2;
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
 
         return res;
+    }
+
+    public static void showSimpleDigit(int num) {
+        if (num >= 2) {
+            System.out.println(2);
+        }
+        for (int i = 3; i <= num; i += 2) {
+            if (isSimple(i)) {
+                System.out.println(i);
+            }
+        }
+        }
+
+
+    public static boolean isSimple(int num) {
+        for (int i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i == 0) {
+                return false;
+            }
+        }
+        return true;
     }
 }
 
