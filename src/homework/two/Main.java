@@ -10,7 +10,7 @@ public class Main {
                 ""};
 
         for (String sentence : testText) {
-            System.out.println(sentence + " <- start text");
+            System.out.println(sentence + " <- before text");
             System.out.println(correction(sentence) + " <- after correction\n");
         }
     }
