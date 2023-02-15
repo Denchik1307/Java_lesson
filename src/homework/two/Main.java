@@ -6,7 +6,7 @@ public class Main {
 
         String[] testText = {"Добрый   день Как      дела Все хорошо Вижу у    вас    тоже   неплохо     :-)",
                 null,
-                "Привет",
+                "Привет   ",
                 ""};
 
         for (String sentence : testText) {
@@ -37,7 +37,7 @@ public class Main {
             replacedText.append(".");
 
         } else {
-            return "Need more words for correct working!!!";
+            return "Need one or more words for correct working!!!";
         }
 
         return replacedText.toString();
