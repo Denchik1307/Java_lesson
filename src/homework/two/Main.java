@@ -18,22 +18,28 @@ public class Main {
     public static String correction(String text) {
         if (text == null) return "Sending \"null\" is incorrect!!!";
 
-        StringBuilder tmp = new StringBuilder();
+        StringBuilder replacedText = new StringBuilder();
+
         String[] listWords = text.split("\\s+");
+
         if (!listWords[0].equals("")) {
-            tmp.append(listWords[0]);
+            String firstWord = listWords[0];
+            replacedText.append(firstWord);
+
             for (int i = 1; i < listWords.length; i++) {
-                if (Character.isUpperCase(listWords[i].codePointAt(0))) {
-                    tmp.append(".");
+                char firstLetter = (char) listWords[i].codePointAt(0);
+                if (Character.isUpperCase(firstLetter)) {
+                    replacedText.append(".");
                 }
-                tmp.append(" ");
-                tmp.append(listWords[i]);
+                replacedText.append(" ");
+                replacedText.append(listWords[i]);
             }
-            tmp.append(".");
+            replacedText.append(".");
+
         } else {
             return "Need more words for correct working!!!";
         }
 
-        return tmp.toString();
+        return replacedText.toString();
     }
 }
