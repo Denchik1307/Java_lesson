@@ -10,8 +10,8 @@ public class Main {
                 ""};
 
         for (String sentence : testText) {
-            System.out.println(sentence + " <- text before");
-            System.out.println(correction(sentence) + " <- after correction\n");
+            System.out.println(sentence + " ← text before");
+            System.out.println(correction(sentence) + " ← after correction\n");
         }
     }
 
@@ -19,7 +19,6 @@ public class Main {
         if (text == null) return "Sending \"null\" is incorrect!!!";
 
         StringBuilder replacedText = new StringBuilder();
-
         String[] listWords = text.split("\\s+");
 
         if (!listWords[0].equals("")) {
@@ -35,11 +34,9 @@ public class Main {
                 replacedText.append(listWords[i]);
             }
             replacedText.append(".");
-
         } else {
             return "Need one or more words for correct working!!!";
         }
-
         return replacedText.toString();
     }
 }
