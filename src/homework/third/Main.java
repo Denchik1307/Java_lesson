@@ -13,13 +13,15 @@ public class Main {
         show("average→ " + getAverage(listRandomValue), true);
 
         listRandomValue.removeIf(item -> item % 2 == 0);
-        show("only odd→ " + listRandomValue, false);
+        show("only odd→ " + listRandomValue, true);
 
         // Try to sort merging
         ArrayList<Integer> listRandomValueForTestMergeSort = createListRandomValue(0, 100, 20);
         int[] arrayForTesting = listRandomValueForTestMergeSort.stream().mapToInt(integer -> integer).toArray();
+
+        show(Arrays.toString(arrayForTesting) + " ← before sort merge", false);
         MySort.mergeSort(arrayForTesting);
-        System.out.println(Arrays.toString(arrayForTesting));
+        show(Arrays.toString(arrayForTesting) + " ← after sort merge", true);
     }
 
     public static ArrayList<Integer> createListRandomValue(int minValue, int maxValue, int size) {
