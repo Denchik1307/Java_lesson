@@ -17,13 +17,13 @@ public class Main {
         show("only odd→ " + listRandomValue, false);
 
 
-        // Try to merge sort
+        // Try to sort merging
         List<Integer> listRandomValueForTestMergeSort = createListRandomValue(0, 100, 20);
         int[] arrayForTesting = new int[listRandomValueForTestMergeSort.size()];
-        for(int i = 0; i < listRandomValueForTestMergeSort.size(); i++) {
+        for (int i = 0; i < listRandomValueForTestMergeSort.size(); i++) {
             arrayForTesting[i] = listRandomValueForTestMergeSort.get(i);
         }
-        MergeSort.mergeSort(arrayForTesting);
+        MySort.mergeSort(arrayForTesting);
         System.out.println(Arrays.toString(arrayForTesting));
     }
 
@@ -49,14 +49,14 @@ public class Main {
     }
 }
 
-abstract class MergeSort {
+abstract class MySort {
 
 
     public static void mergeSort(int[] arrayToSort) {
         if (arrayToSort.length < 2) {
             return;
         }
-        int sizeLeftHalf = arrayToSort.length/2;
+        int sizeLeftHalf = arrayToSort.length / 2;
         int sizeRightHalf = arrayToSort.length - sizeLeftHalf;
 
         int[] leftHalfArray = new int[sizeLeftHalf];
@@ -71,21 +71,22 @@ abstract class MergeSort {
         merge(arrayToSort, leftHalfArray, rightHalfArray);
     }
 
-    private static void merge(int[] arrayToSort, int[] leftHalfArray, int[] rightHalfArray){
-        int x = 0, y = 0, z = 0;
-        while (x < leftHalfArray.length && y < rightHalfArray.length) {
-            if (leftHalfArray[x] <= rightHalfArray[y]) {
-                arrayToSort[z++] = leftHalfArray[x++];
-            }
-            else {
-                arrayToSort[z++] = rightHalfArray[y++];
+    private static void merge(int[] arrayToSort, int[] leftHalfArray, int[] rightHalfArray) {
+        int indexLeftHalfArray = 0;
+        int indexRightHalfArray = 0;
+        int indexBossArray = 0;
+        while (indexLeftHalfArray < leftHalfArray.length && indexRightHalfArray < rightHalfArray.length) {
+            if (leftHalfArray[indexLeftHalfArray] <= rightHalfArray[indexRightHalfArray]) {
+                arrayToSort[indexBossArray++] = leftHalfArray[indexLeftHalfArray++];
+            } else {
+                arrayToSort[indexBossArray++] = rightHalfArray[indexRightHalfArray++];
             }
         }
-        while (x < leftHalfArray.length) {
-            arrayToSort[z++] = leftHalfArray[x++];
+        while (indexLeftHalfArray < leftHalfArray.length) {
+            arrayToSort[indexBossArray++] = leftHalfArray[indexLeftHalfArray++];
         }
-        while (y < rightHalfArray.length) {
-            arrayToSort[z++] = rightHalfArray[y++];
+        while (indexRightHalfArray < rightHalfArray.length) {
+            arrayToSort[indexBossArray++] = rightHalfArray[indexRightHalfArray++];
         }
     }
 }
