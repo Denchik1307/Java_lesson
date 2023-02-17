@@ -5,34 +5,31 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class Main {
     public static void main(String[] args) {
-        List<Integer> listRandomValue = createListRandomValue(0, 100, 30);
+        ArrayList<Integer> listRandomValue = createListRandomValue(0, 100, 30);
         show(listRandomValue, true);
 
         Collections.sort(listRandomValue);
         show("min→ " + listRandomValue.get(0) + " | " + listRandomValue.get(listRandomValue.size() - 1) + " ←max", false);
         show("average→ " + getAverage(listRandomValue), true);
 
-
         listRandomValue.removeIf(item -> item % 2 == 0);
         show("only odd→ " + listRandomValue, false);
 
-
         // Try to sort merging
-        List<Integer> listRandomValueForTestMergeSort = createListRandomValue(0, 100, 20);
-        int[] arrayForTesting = new int[listRandomValueForTestMergeSort.size()];
-        for (int i = 0; i < listRandomValueForTestMergeSort.size(); i++) {
-            arrayForTesting[i] = listRandomValueForTestMergeSort.get(i);
-        }
+        ArrayList<Integer> listRandomValueForTestMergeSort = createListRandomValue(0, 100, 20);
+        int[] arrayForTesting = listRandomValueForTestMergeSort.stream().mapToInt(integer -> integer).toArray();
         MySort.mergeSort(arrayForTesting);
         System.out.println(Arrays.toString(arrayForTesting));
     }
 
-    public static List<Integer> createListRandomValue(int minValue, int maxValue, int size) {
-        List<Integer> list = new ArrayList<>();
+    public static ArrayList<Integer> createListRandomValue(int minValue, int maxValue, int size) {
+        ArrayList<Integer> list = new ArrayList<>();
         Random rnd = new Random();
-        for (int i = 0; i < size; i++) {
+
+        for (AtomicInteger i = new AtomicInteger(); i.get() < size; i.getAndIncrement()) {
             list.add(rnd.nextInt(minValue, maxValue));
         }
+
         return list;
     }
 
@@ -72,21 +69,24 @@ abstract class MySort {
     }
 
     private static void merge(int[] arrayToSort, int[] leftHalfArray, int[] rightHalfArray) {
-        int indexLeftHalfArray = 0;
-        int indexRightHalfArray = 0;
-        int indexBossArray = 0;
-        while (indexLeftHalfArray < leftHalfArray.length && indexRightHalfArray < rightHalfArray.length) {
-            if (leftHalfArray[indexLeftHalfArray] <= rightHalfArray[indexRightHalfArray]) {
-                arrayToSort[indexBossArray++] = leftHalfArray[indexLeftHalfArray++];
+        AtomicInteger indexRightHalfArray = new AtomicInteger();
+        AtomicInteger indexBossArray = new AtomicInteger();
+        AtomicInteger indexLeftHalfArray = new AtomicInteger();
+
+        while (indexLeftHalfArray.get() < leftHalfArray.length && indexRightHalfArray.get() < rightHalfArray.length) {
+            if (leftHalfArray[indexLeftHalfArray.get()] <= rightHalfArray[indexRightHalfArray.get()]) {
+                arrayToSort[indexBossArray.getAndIncrement()] = leftHalfArray[indexLeftHalfArray.getAndIncrement()];
             } else {
-                arrayToSort[indexBossArray++] = rightHalfArray[indexRightHalfArray++];
+                arrayToSort[indexBossArray.getAndIncrement()] = rightHalfArray[indexRightHalfArray.getAndIncrement()];
             }
         }
-        while (indexLeftHalfArray < leftHalfArray.length) {
-            arrayToSort[indexBossArray++] = leftHalfArray[indexLeftHalfArray++];
+
+        while (indexLeftHalfArray.get() < leftHalfArray.length) {
+            arrayToSort[indexBossArray.getAndIncrement()] = leftHalfArray[indexLeftHalfArray.getAndIncrement()];
         }
-        while (indexRightHalfArray < rightHalfArray.length) {
-            arrayToSort[indexBossArray++] = rightHalfArray[indexRightHalfArray++];
+
+        while (indexRightHalfArray.get() < rightHalfArray.length) {
+            arrayToSort[indexBossArray.getAndIncrement()] = rightHalfArray[indexRightHalfArray.getAndIncrement()];
         }
     }
 }
