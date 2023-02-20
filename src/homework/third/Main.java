@@ -9,8 +9,8 @@ public class Main {
         show(listRandomValue, true);
 
         Collections.sort(listRandomValue);
-        show("min→ " + listRandomValue.get(0) + " | " + listRandomValue.get(listRandomValue.size() - 1) + " ←max", false);
-        show("average→ " + getAverage(listRandomValue), true);
+        show("min → " + listRandomValue.get(0) + " | " + listRandomValue.get(listRandomValue.size() - 1) + " ← max", false);
+        show("average → " + getAverage(listRandomValue), true);
 
         listRandomValue.removeIf(item -> item % 2 == 0);
         show("only odd→ " + listRandomValue, true);
@@ -28,7 +28,7 @@ public class Main {
         ArrayList<Integer> list = new ArrayList<>();
         Random rnd = new Random();
 
-        for (AtomicInteger i = new AtomicInteger(); i.get() < size; i.getAndIncrement()) {
+        for (int i = 0; i < size; i++) {
             list.add(rnd.nextInt(minValue, maxValue));
         }
 
@@ -71,24 +71,24 @@ abstract class MySort {
     }
 
     private static void merge(int[] arrayToSort, int[] leftHalfArray, int[] rightHalfArray) {
-        AtomicInteger indexRightHalfArray = new AtomicInteger();
-        AtomicInteger indexBossArray = new AtomicInteger();
-        AtomicInteger indexLeftHalfArray = new AtomicInteger();
+        int indexBossArray = 0;
+        int indexLeftHalfArray = 0;
+        int indexRightHalfArray = 0;
 
-        while (indexLeftHalfArray.get() < leftHalfArray.length && indexRightHalfArray.get() < rightHalfArray.length) {
-            if (leftHalfArray[indexLeftHalfArray.get()] <= rightHalfArray[indexRightHalfArray.get()]) {
-                arrayToSort[indexBossArray.getAndIncrement()] = leftHalfArray[indexLeftHalfArray.getAndIncrement()];
+        while (indexLeftHalfArray < leftHalfArray.length && indexRightHalfArray < rightHalfArray.length) {
+            if (leftHalfArray[indexLeftHalfArray] <= rightHalfArray[indexRightHalfArray]) {
+                arrayToSort[indexBossArray++] = leftHalfArray[indexLeftHalfArray++];
             } else {
-                arrayToSort[indexBossArray.getAndIncrement()] = rightHalfArray[indexRightHalfArray.getAndIncrement()];
+                arrayToSort[indexBossArray++] = rightHalfArray[indexRightHalfArray++];
             }
         }
 
-        while (indexLeftHalfArray.get() < leftHalfArray.length) {
-            arrayToSort[indexBossArray.getAndIncrement()] = leftHalfArray[indexLeftHalfArray.getAndIncrement()];
+        while (indexLeftHalfArray < leftHalfArray.length) {
+            arrayToSort[indexBossArray++] = leftHalfArray[indexLeftHalfArray++];
         }
 
-        while (indexRightHalfArray.get() < rightHalfArray.length) {
-            arrayToSort[indexBossArray.getAndIncrement()] = rightHalfArray[indexRightHalfArray.getAndIncrement()];
+        while (indexRightHalfArray < rightHalfArray.length) {
+            arrayToSort[indexBossArray++] = rightHalfArray[indexRightHalfArray++];
         }
     }
 }
