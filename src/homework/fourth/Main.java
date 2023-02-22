@@ -6,7 +6,6 @@ import java.util.HashSet;
 public class Main {
     public static void main(String[] args) {
 
-        System.console();
         PhoneBook phones = new PhoneBook();
         phones.addContact("Denis");
         phones.addContact("Max", "+375(29)134-56-58");
