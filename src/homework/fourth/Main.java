@@ -6,54 +6,55 @@ import java.util.HashSet;
 public class Main {
     public static void main(String[] args) {
 
-        PhoneBook phones = new PhoneBook();
-        phones.addContact("Denis");
-        phones.addContact("Max", "+375(29)134-56-58");
-        phones.showAll();
-        phones.addPhone("Denis", "+375(29)125-69-51");
-        phones.addPhone("Alex", "+375(29)124-62-01");
-        phones.addPhone("Alex", "+375(29)795-52-46");
-        phones.showAll();
-        phones.movePhoneToContact("Alex", "Denis", "+375(29)795-52-46");
-        phones.replaceNumber("Alex", "+375(29)124-62-01", "+375(29)767-34-82");
-        phones.showAll();
-        phones.deleteContact("Max");
-        phones.showAll();
-        phones.find("Alex");
-        phones.find("Max");
+        
+        PhoneBook.addContact("Denis");
+        PhoneBook.addContact("Max", "+375(29)134-56-58");
+        PhoneBook.showAll();
+        PhoneBook.addPhone("Denis", "+375(29)125-69-51");
+        PhoneBook.addPhone("Alex", "+375(29)124-62-01");
+        PhoneBook.addPhone("Alex", "+375(29)795-52-46");
+        PhoneBook.showAll();
+        PhoneBook.movePhoneToContact("Alex", "Denis", "+375(29)795-52-46");
+        PhoneBook.replaceNumber("Alex", "+375(29)124-62-01", "+375(29)767-34-82");
+        PhoneBook.deletePhone("Alex", "+375(29)767-34-82");
+        PhoneBook.showAll();
+        PhoneBook.deleteContact("Max");
+        PhoneBook.showAll();
+        PhoneBook.find("Alex");
+        PhoneBook.find("Max");
 
     }
 }
 
 
-class PhoneBook {
+abstract class PhoneBook {
     private static final HashMap<String, HashSet<String>> phoneBook = new HashMap<>();
 
-    public void addContact(String login) {
+    public static void addContact(String login) {
         if (!phoneBook.containsKey(login)) {
-            HashSet<String> phones = new HashSet<>();
-            phoneBook.put(login, phones);
+            HashSet<String> PhoneBook = new HashSet<>();
+            phoneBook.put(login, PhoneBook);
         } else {
             System.out.printf("Contact \"%s\"is there\n", login);
         }
     }
 
-    public void addContact(String login, String phone) {
+    public static void addContact(String login, String phone) {
         if (!phoneBook.containsKey(login)) {
-            HashSet<String> phones = new HashSet<>();
-            phones.add(phone);
-            phoneBook.put(login, phones);
+            HashSet<String> PhoneBook = new HashSet<>();
+            PhoneBook.add(phone);
+            phoneBook.put(login, PhoneBook);
         } else {
             System.out.printf("Contact \"%s\"is there\n", login);
         }
     }
 
-    public void addPhone(String login, String phone) {
+    public static void addPhone(String login, String phone) {
         if (!(login == null && phone == null)) {
             if (phoneBook.get(login) == null) {
-                HashSet<String> phones = new HashSet<>();
-                phones.add(phone);
-                phoneBook.put(login, phones);
+                HashSet<String> PhoneBook = new HashSet<>();
+                PhoneBook.add(phone);
+                phoneBook.put(login, PhoneBook);
             } else if (phoneBook.get(login).contains(phone)) {
                 System.out.println("This number is there\n");
             } else {
@@ -64,7 +65,7 @@ class PhoneBook {
         }
     }
 
-    public void movePhoneToContact(String fromContact, String toContact, String phone) {
+    public static void movePhoneToContact(String fromContact, String toContact, String phone) {
         if (phoneBook.containsKey(fromContact) && phoneBook.containsKey(toContact)) {
             if (phoneBook.get(fromContact).contains(phone)) {
                 addPhone(toContact, phone);
@@ -75,7 +76,7 @@ class PhoneBook {
         }
     }
 
-    public void find(String login) {
+    public static void find(String login) {
         if (phoneBook.containsKey(login)) {
             System.out.println("Found contact ↓");
             System.out.println(login);
@@ -86,17 +87,17 @@ class PhoneBook {
         }
     }
 
-    public void showAll() {
+    public static void showAll() {
         System.out.println("All contacts ↓");
-        phoneBook.forEach((name, phones) -> {
+        phoneBook.forEach((name, PhoneBook) -> {
             System.out.println(name);
-            phones.forEach(System.out::println);
+            PhoneBook.forEach(System.out::println);
             System.out.println();
         });
         System.out.println("All contacts ↑\n");
     }
 
-    public void deleteContact(String name) {
+    public static void deleteContact(String name) {
         if (phoneBook.containsKey(name)) {
             phoneBook.remove(name);
         } else {
@@ -104,7 +105,7 @@ class PhoneBook {
         }
     }
 
-    public void deletePhone(String name, String phone) {
+    public static void deletePhone(String name, String phone) {
         if (phoneBook.containsKey(name)) {
             if (phoneBook.get(name).contains(phone)) {
                 phoneBook.get(name).remove(phone);
@@ -116,7 +117,7 @@ class PhoneBook {
         }
     }
 
-    public void replaceNumber(String name, String oldPhone, String newPhone) {
+    public static void replaceNumber(String name, String oldPhone, String newPhone) {
         if (phoneBook.containsKey(name)) {
             if (phoneBook.get(name).contains(oldPhone)) {
                 phoneBook.get(name).remove(oldPhone);
