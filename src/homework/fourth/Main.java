@@ -6,28 +6,28 @@ import java.util.HashSet;
 public class Main {
     public static void main(String[] args) {
 
-        
-        PhoneBook.addContact("Denis");
-        PhoneBook.addContact("Max", "+375(29)134-56-58");
-        PhoneBook.showAll();
-        PhoneBook.addPhone("Denis", "+375(29)125-69-51");
-        PhoneBook.addPhone("Alex", "+375(29)124-62-01");
-        PhoneBook.addPhone("Alex", "+375(29)795-52-46");
-        PhoneBook.showAll();
-        PhoneBook.movePhoneToContact("Alex", "Denis", "+375(29)795-52-46");
-        PhoneBook.replaceNumber("Alex", "+375(29)124-62-01", "+375(29)767-34-82");
-        PhoneBook.deletePhone("Alex", "+375(29)767-34-82");
-        PhoneBook.showAll();
-        PhoneBook.deleteContact("Max");
-        PhoneBook.showAll();
-        PhoneBook.find("Alex");
-        PhoneBook.find("Max");
-
+        Phonebook.addContact("Denis");
+        Phonebook.addContact("Max", "+375(29)134-56-58");
+        Phonebook.showAll();
+        Phonebook.addPhone("Denis", "+375(29)125-69-51");
+        Phonebook.addPhone("Alex", "+375(29)124-62-01");
+        Phonebook.addPhone("Alex", "+375(29)795-52-46");
+        Phonebook.showAll();
+        Phonebook.movePhoneToContact("Alex", "Denis", "+375(29)795-52-46");
+        Phonebook.replaceNumber("Alex", "+375(29)124-62-01", "+375(29)767-34-82");
+        Phonebook.deletePhone("Alex", "+375(29)767-34-82");
+        Phonebook.showAll();
+        Phonebook.deleteContact("Max");
+        Phonebook.showAll();
+        Phonebook.find("Alex");
+        Phonebook.find("Max");
+        Phonebook.eraseBook();
+        Phonebook.showAll();
     }
 }
 
 
-abstract class PhoneBook {
+abstract class Phonebook {
     private static final HashMap<String, HashSet<String>> phoneBook = new HashMap<>();
 
     public static void addContact(String login) {
@@ -128,6 +128,11 @@ abstract class PhoneBook {
         } else {
             System.out.println("User not found");
         }
+    }
+
+    public static void eraseBook(){
+        phoneBook.clear();
+        System.out.println("Phonebook erased");
     }
 
 }
