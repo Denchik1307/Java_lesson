@@ -46,7 +46,7 @@ abstract class Array {
         if (result.size() < MIN_LENGTH_SUBARRAY) {
             return "Чёт ничего не нашлось :( ";
         } else {
-            return "Повторяющийся подмассив с максимальной длиной " + counter + " → " + result;
+            return "Повторяющийся подмассив с максимальной длинной " + counter + " → " + result;
         }
     }
 
