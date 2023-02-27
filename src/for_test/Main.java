@@ -24,7 +24,7 @@ public class Main {
     }
 }
 
-class Array {
+abstract class Array {
 
     private static final int MIN_LENGTH_SUBARRAY = 2;
 
