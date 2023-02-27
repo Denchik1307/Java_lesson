@@ -55,7 +55,7 @@ abstract class Array {
         }
     }
 
-    public static boolean isContains(int[] arr, int[] arr2) {
+    private static boolean isContains(int[] arr, int[] arr2) {
         for (int startIndex = 0; startIndex <= arr2.length; startIndex++) {
             for (int endIndex = startIndex; endIndex <= arr2.length; endIndex++) {
                 int[] tmp = Arrays.copyOfRange(arr2, startIndex, endIndex);
