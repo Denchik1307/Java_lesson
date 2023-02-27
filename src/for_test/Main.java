@@ -28,16 +28,16 @@ abstract class Array {
 
     private static final int MIN_LENGTH_SUBARRAY = 2;
 
-    public static String findEqualsSubarray(int[] arr1, int[] arr2) {
+    public static String findEqualsSubarray(int[] arrayOne, int[] arrayTwo) {
         List<Integer> result = new ArrayList<>();
         int count = 0;
 
         long timeStart = System.currentTimeMillis();
 
-        for (int startIndex = 0; startIndex <= arr1.length; startIndex++) {
-            for (int endIndex = startIndex + 1; endIndex <= arr1.length; endIndex++) {
-                int[] tmp = Arrays.copyOfRange(arr1, startIndex, endIndex);
-                if (tmp.length >= MIN_LENGTH_SUBARRAY && count < tmp.length && isContains(tmp, arr2)) {
+        for (int startIndex = 0; startIndex <= arrayOne.length; startIndex++) {
+            for (int endIndex = startIndex + 1; endIndex <= arrayOne.length; endIndex++) {
+                int[] tmp = Arrays.copyOfRange(arrayOne, startIndex, endIndex);
+                if (tmp.length >= MIN_LENGTH_SUBARRAY && count < tmp.length && isContains(tmp, arrayTwo)) {
                     result.clear();
                     for (int item : tmp) {
                         result.add(item);
@@ -46,20 +46,20 @@ abstract class Array {
                 }
             }
         }
-        System.out.printf("Time working %s\n", System.currentTimeMillis() - timeStart);
+        System.out.printf("Время выполнения %s миллисек.\n", System.currentTimeMillis() - timeStart);
 
         if (result.size() < MIN_LENGTH_SUBARRAY) {
             return "Чёт ничего не нашлось :( ";
         } else {
-            return "Повторяющийся подмассив с максимальной длиной " + result + " и содержит " + count + " элементов";
+            return "Повторяющийся подмассив с максимальной длиной " + count + " → " + result;
         }
     }
 
-    private static boolean isContains(int[] arr, int[] arr2) {
-        for (int startIndex = 0; startIndex <= arr2.length; startIndex++) {
-            for (int endIndex = startIndex + 1; endIndex <= arr2.length; endIndex++) {
-                int[] tmp = Arrays.copyOfRange(arr2, startIndex, endIndex);
-                if (arr.length == tmp.length && Arrays.equals(arr, tmp)) {
+    private static boolean isContains(int[] arrayOne, int[] arrayTwo) {
+        for (int startIndex = 0; startIndex <= arrayTwo.length; startIndex++) {
+            for (int endIndex = startIndex + 1; endIndex <= arrayTwo.length; endIndex++) {
+                int[] tmp = Arrays.copyOfRange(arrayTwo, startIndex, endIndex);
+                if (arrayOne.length == tmp.length && Arrays.equals(arrayOne, tmp)) {
                     return true;
                 }
             }
