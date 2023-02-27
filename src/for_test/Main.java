@@ -45,7 +45,7 @@ class Array {
         for (int i = 0; i <= arr2.length; i++) {
             for (int j = i; j <= arr2.length; j++) {
                 int[] tmp = Arrays.copyOfRange(arr2, i, j);
-                if (Arrays.equals(arr, tmp)) {
+                if (arr.length == tmp.length && Arrays.equals(arr, tmp)) {
                     return true;
                 }
             }
