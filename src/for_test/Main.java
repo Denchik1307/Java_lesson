@@ -35,7 +35,7 @@ abstract class Array {
         long timeStart = System.currentTimeMillis();
 
         for (int startIndex = 0; startIndex <= arr1.length; startIndex++) {
-            for (int endIndex = startIndex; endIndex <= arr1.length; endIndex++) {
+            for (int endIndex = startIndex + 1; endIndex <= arr1.length; endIndex++) {
                 int[] tmp = Arrays.copyOfRange(arr1, startIndex, endIndex);
                 if (tmp.length >= MIN_LENGTH_SUBARRAY && count < tmp.length && isContains(tmp, arr2)) {
                     result.clear();
@@ -46,7 +46,7 @@ abstract class Array {
                 }
             }
         }
-        System.out.printf("Time working %s\n",System.currentTimeMillis() - timeStart);
+        System.out.printf("Time working %s\n", System.currentTimeMillis() - timeStart);
 
         if (result.size() < MIN_LENGTH_SUBARRAY) {
             return "Чёт ничего не нашлось :( ";
@@ -57,7 +57,7 @@ abstract class Array {
 
     private static boolean isContains(int[] arr, int[] arr2) {
         for (int startIndex = 0; startIndex <= arr2.length; startIndex++) {
-            for (int endIndex = startIndex; endIndex <= arr2.length; endIndex++) {
+            for (int endIndex = startIndex + 1; endIndex <= arr2.length; endIndex++) {
                 int[] tmp = Arrays.copyOfRange(arr2, startIndex, endIndex);
                 if (arr.length == tmp.length && Arrays.equals(arr, tmp)) {
                     return true;
