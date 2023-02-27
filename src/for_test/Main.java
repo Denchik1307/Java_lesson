@@ -26,14 +26,18 @@ public class Main {
 
 class Array {
 
+    private static final int MIN_LENGTH_SUBARRAY = 2;
+
     public static String findEqualsSubarray(int[] arr1, int[] arr2) {
         List<Integer> result = new ArrayList<>();
         int count = 0;
 
-        for (int i = 0; i <= arr1.length; i++) {
-            for (int j = i; j <= arr1.length; j++) {
-                int[] tmp = Arrays.copyOfRange(arr1, i, j);
-                if (tmp.length > 1 && count < tmp.length && isContains(tmp, arr2)) {
+        long timeStart = System.currentTimeMillis();
+
+        for (int startIndex = 0; startIndex <= arr1.length; startIndex++) {
+            for (int endIndex = startIndex; endIndex <= arr1.length; endIndex++) {
+                int[] tmp = Arrays.copyOfRange(arr1, startIndex, endIndex);
+                if (tmp.length >= MIN_LENGTH_SUBARRAY && count < tmp.length && isContains(tmp, arr2)) {
                     result.clear();
                     for (int item : tmp) {
                         result.add(item);
@@ -42,7 +46,9 @@ class Array {
                 }
             }
         }
-        if (result.size() < 2) {
+        System.out.printf("Time working %s\n",System.currentTimeMillis() - timeStart);
+
+        if (result.size() < MIN_LENGTH_SUBARRAY) {
             return "Чёт ничего не нашлось :( ";
         } else {
             return "Повторяющийся подмассив с максимальной длиной " + result + " и содержит " + count + " элементов";
@@ -50,9 +56,9 @@ class Array {
     }
 
     public static boolean isContains(int[] arr, int[] arr2) {
-        for (int i = 0; i <= arr2.length; i++) {
-            for (int j = i; j <= arr2.length; j++) {
-                int[] tmp = Arrays.copyOfRange(arr2, i, j);
+        for (int startIndex = 0; startIndex <= arr2.length; startIndex++) {
+            for (int endIndex = startIndex; endIndex <= arr2.length; endIndex++) {
+                int[] tmp = Arrays.copyOfRange(arr2, startIndex, endIndex);
                 if (arr.length == tmp.length && Arrays.equals(arr, tmp)) {
                     return true;
                 }
