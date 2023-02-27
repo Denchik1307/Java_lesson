@@ -30,19 +30,17 @@ abstract class Array {
 
     public static String findEqualsSubarray(int[] arrayOne, int[] arrayTwo) {
         List<Integer> result = new ArrayList<>();
-        int count = 0;
+        int counter = 0;
 
         long timeStart = System.currentTimeMillis();
 
         for (int startIndex = 0; startIndex <= arrayOne.length; startIndex++) {
             for (int endIndex = startIndex + 1; endIndex <= arrayOne.length; endIndex++) {
-                int[] tmp = Arrays.copyOfRange(arrayOne, startIndex, endIndex);
-                if (tmp.length >= MIN_LENGTH_SUBARRAY && count < tmp.length && isContains(tmp, arrayTwo)) {
+                int[] tempSubarray = Arrays.copyOfRange(arrayOne, startIndex, endIndex);
+                if (tempSubarray.length >= MIN_LENGTH_SUBARRAY && counter < tempSubarray.length && isContains(tempSubarray, arrayTwo)) {
                     result.clear();
-                    for (int item : tmp) {
-                        result.add(item);
-                    }
-                    count = tmp.length;
+                    for (int item : tempSubarray) result.add(item);
+                    counter = tempSubarray.length;
                 }
             }
         }
@@ -51,7 +49,7 @@ abstract class Array {
         if (result.size() < MIN_LENGTH_SUBARRAY) {
             return "Чёт ничего не нашлось :( ";
         } else {
-            return "Повторяющийся подмассив с максимальной длиной " + count + " → " + result;
+            return "Повторяющийся подмассив с максимальной длиной " + counter + " → " + result;
         }
     }
 
