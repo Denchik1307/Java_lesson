@@ -9,17 +9,15 @@ public class Main {
 
         int[] nums1 = {1, 3, 2, 1, 7};
         int[] nums2 = {3, 2, 1, 4, 7};
+        System.out.println(Array.findEqualsSubarray(nums1, nums2));
 
         int[] nums3 = {0, 0, 0, 0, 0};
         int[] nums4 = {0, 0, 0, 0, 0};
+        System.out.println(Array.findEqualsSubarray(nums3, nums4));
 
         int[] nums5 = {1, 2, 4, 3, 2};
         int[] nums6 = {2, 3, 1, 3, 5};
-
-        System.out.println(Array.findEqualsSubarray(nums1, nums2));
-        System.out.println(Array.findEqualsSubarray(nums3, nums4));
         System.out.println(Array.findEqualsSubarray(nums5, nums6));
-
     }
 }
 
