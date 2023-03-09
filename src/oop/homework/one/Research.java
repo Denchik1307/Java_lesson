@@ -11,10 +11,10 @@ public class Research {
         tree = geoTree.getTree();
     }
 
-    public ArrayList<String> spend(Person p, Relationship re) {
+    public ArrayList<String> spend(Person personOne, Relationship re) {
         for (Node t : tree) {
-            if (Objects.equals(t.getP1().fullName, p.fullName) && t.getRe() == re) {
-                result.add(t.getP2().fullName);
+            if (Objects.equals(t.getP1().getFullName(), personOne.getFullName()) && t.getRe() == re) {
+                result.add(t.getP2().getFullName());
             }
         }
         return result;
