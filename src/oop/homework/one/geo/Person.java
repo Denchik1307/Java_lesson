@@ -1,7 +1,8 @@
-package oop.homework.one;
+package oop.homework.one.geo;
 
 public class Person {
     private String fullName;
+    private String age;
 
     public Person(String fullName) {
         this.fullName = fullName;
@@ -15,4 +16,11 @@ public class Person {
         return fullName;
     }
 
+    public String getAge() {
+        return age;
+    }
+
+    public void setAge(String age) {
+        this.age = age;
+    }
 }

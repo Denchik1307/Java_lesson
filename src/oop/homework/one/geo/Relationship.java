@@ -1,4 +1,4 @@
-package oop.homework.one;
+package oop.homework.one.geo;
 
 public enum Relationship {
     married,
