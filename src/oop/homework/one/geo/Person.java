@@ -1,11 +1,18 @@
 package oop.homework.one.geo;
 
-public class Person {
+public class Person{
+    private final String EMPTY = "Empty";
     private String fullName;
-    private String age;
+    private String birthday;
+
+    public Person(String fullName, String birthday) {
+        this.fullName = fullName;
+        this.birthday = birthday;
+    }
 
     public Person(String fullName) {
         this.fullName = fullName;
+        this.birthday = EMPTY;
     }
 
     public void changeName(String newName) {
@@ -16,11 +23,16 @@ public class Person {
         return fullName;
     }
 
-    public String getAge() {
-        return age;
+    public String getBirthday() {
+        return (this.birthday.equals(EMPTY)) ? EMPTY: this.birthday;
     }
 
-    public void setAge(String age) {
-        this.age = age;
+    public void setOrChangeBirthday(String birthday) {
+        this.birthday = birthday;
+    }
+
+    @Override
+    public String toString() {
+        return this.fullName;
     }
 }

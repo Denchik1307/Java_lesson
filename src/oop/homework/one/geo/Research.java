@@ -1,24 +1,42 @@
 package oop.homework.one.geo;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class Research {
-    ArrayList<String> result = new ArrayList<>();
-    private final ArrayList<Node> tree;
+    //    private final ArrayList<String> result = new ArrayList<>();
+    private final ArrayList<Link> tree;
 
     public Research(GeoTree geoTree) {
         tree = geoTree.getTree();
     }
 
-    public ArrayList<String> spend(Person personOne, Relationship relationship) {
-        for (Node person : tree) {
-            if (Objects.equals(person.personOne().getFullName(), person.personTwo().getFullName()) &&
-                    person.relationship() == relationship) {
-                result.add(person.personTwo().getFullName());
+    public String spend(Person personForSpend, Relationship relationship) {
+        StringBuilder result = new StringBuilder();
+        for (Link person : tree) {
+            if (personForSpend.equals(person.getPersonOne()) && person.getLinks().equals(relationship)) {
+                result.append(person.toString());
             }
         }
-        return result;
+        if (result.length() < 1) {
+            result.append(relationship)
+                    .append(" not found");
+        }
+        return result.toString();
     }
+
+    public String spend(Person personForSpend) {
+        StringBuilder result = new StringBuilder();
+        for (Link person : tree) {
+            if (personForSpend.equals(person.getPersonOne())) {
+                result.append(person.toString());
+            }
+        }
+        if (result.length() < 1) {
+            result.append(personForSpend.toString())
+                    .append(" ↔ spend not found");
+        }
+        return result.toString();
+    }
+
 
 }

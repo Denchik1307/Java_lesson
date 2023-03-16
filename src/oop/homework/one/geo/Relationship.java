@@ -1,7 +1,8 @@
 package oop.homework.one.geo;
 
 public enum Relationship {
-    married,
+    brotherOrSister,
     parent,
-    children
+    children,
+    partner,
 }
