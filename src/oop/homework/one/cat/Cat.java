@@ -5,7 +5,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class Cat {
 
-    private int corm = 100;
+    private int corm =  100;
     int maxEatToMisc = 10;
     private String name;
 
