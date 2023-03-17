@@ -2,11 +2,9 @@ package oop.homework.one.cat;
 
 public class Main {
     public static void main(String[] args) {
+        HumanExampleCat alex = new HumanExampleCat("Alex");
         Cat myCat = new Cat("Мурка");
-        myCat.petTheCat();
-        myCat.coming();
-        myCat.byeCorm(2, 10);
-        myCat.showCormAtHome();
-        myCat.showSatiety();
+        alex.callTheCat(myCat);
+        alex.petTheCat(myCat);
     }
 }
