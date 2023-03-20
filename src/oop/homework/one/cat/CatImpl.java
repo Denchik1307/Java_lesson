@@ -3,25 +3,26 @@ package oop.homework.one.cat;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class CatImpl implements Cat {
+public class CatImpl implements Cat, FoodCat {
 
-    private int food =  100;
+    private int food = 100;
     int maxEatToMisc = 10;
     private String name;
     private int miscFood;
-
-    public void byeFood(int cormPCS, int cormWeight) {
-        this.food = cormPCS * cormWeight;
-    }
 
     public CatImpl(String name) {
         this.name = name;
     }
 
+    @Override
+    public void byeFood(int cormPCS, int cormWeight) { this.food = cormPCS * cormWeight; }
+
+    @Override
     public void addFootToMisc() {
         this.miscFood = maxEatToMisc;
     }
 
+    @Override
     public String getName() {
         return this.name;
     }
