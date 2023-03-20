@@ -18,7 +18,7 @@ public class Research {
             }
         }
         if (result.length() < 1) {
-            result.append(relationship)
+            result.append("For ").append(personForSpend).append("").append(relationship)
                     .append(" not found");
         }
         return result.toString();
@@ -32,8 +32,9 @@ public class Research {
             }
         }
         if (result.length() < 1) {
-            result.append(personForSpend.toString())
-                    .append(" ↔ spend not found");
+            result.append("For ")
+                    .append(personForSpend.toString())
+                    .append(" spend not found");
         }
         return result.toString();
     }

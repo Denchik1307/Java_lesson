@@ -2,25 +2,39 @@ package oop.homework.one.geo;
 
 public class Person{
     private final String EMPTY = "Empty";
-    private String fullName;
+    private String firstName;
+    private String lastName;
     private String birthday;
 
-    public Person(String fullName, String birthday) {
-        this.fullName = fullName;
+    public Person(String firstName,String lastName, String birthday) {
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.birthday = birthday;
     }
 
-    public Person(String fullName) {
-        this.fullName = fullName;
+    public Person(String firstName,String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.birthday = EMPTY;
     }
 
-    public void changeName(String newName) {
-        this.fullName = newName;
+    public Person(String firstName) {
+        this.firstName = firstName;
+        this.birthday = EMPTY;
     }
 
+    public void changeFirstName(String newFirstName) {
+        this.firstName = newFirstName;
+    }
     public String getFullName() {
-        return fullName;
+        return firstName;
+    }
+    public void changLastName(String newLastName) {
+        this.lastName = newLastName;
+    }
+
+    public String getLastName() {
+        return this.lastName;
     }
 
     public String getBirthday() {
@@ -33,6 +47,10 @@ public class Person{
 
     @Override
     public String toString() {
-        return this.fullName;
+        if (this.lastName!=null){
+            return this.firstName + " " + this.lastName;
+        }else {
+            return this.firstName;
+        }
     }
 }

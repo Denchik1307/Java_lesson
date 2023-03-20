@@ -12,7 +12,7 @@ class PersonTest {
     @Test
     void changeName() {
 
-        sasha.changeName("Sasha");
+        sasha.changeFirstName("Sasha");
         assertEquals(sasha.getFullName(),"Sasha");
     }
     @Test
