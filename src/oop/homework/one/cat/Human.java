@@ -2,7 +2,7 @@ package oop.homework.one.cat;
 
 import java.util.Date;
 
-public interface Human {
+public interface Human extends InteractionWithTheCat{
     String getName();
 
     void changeName(String name);
