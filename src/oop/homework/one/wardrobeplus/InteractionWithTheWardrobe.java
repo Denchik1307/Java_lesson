@@ -1,7 +1,5 @@
 package oop.homework.one.wardrobeplus;
 
-import oop.homework.one.cat.Cat;
-
 public interface InteractionWithTheWardrobe {
 
     void open(Wardrobe wardrobe);

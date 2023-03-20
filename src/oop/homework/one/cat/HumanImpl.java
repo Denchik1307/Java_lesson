@@ -1,9 +1,11 @@
 package oop.homework.one.cat;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Date;
 
-public class HumanExampleCat implements InteractionWithTheCat {
-    public HumanExampleCat(String name, Integer age) {
+public class HumanImpl implements Human, InteractionWithTheCat {
+    public HumanImpl(String name, Integer age) {
         this.name = name;
         this.age = age;
     }
@@ -12,61 +14,68 @@ public class HumanExampleCat implements InteractionWithTheCat {
     private Date birthday;
     private Integer age;
 
-    public HumanExampleCat(String name, Date birthday, Integer age) {
+    public HumanImpl(String name, Date birthday, Integer age) {
         this.name = name;
         this.birthday = birthday;
         this.age = age;
     }
 
-    public HumanExampleCat(String name) {
+    public HumanImpl(String name) {
         this.name = name;
     }
 
-    public HumanExampleCat(String name, Date birthday) {
+    public HumanImpl(String name, Date birthday) {
         this.name = name;
         this.birthday = birthday;
     }
 
+    @Override
     public String getName() {
         return name;
     }
 
+    @Override
     public void changeName(String name) {
         this.name = name;
     }
 
+    @Override
     public Date getBirthday() {
         return birthday;
     }
 
+    @Override
     public void changeBirthday(Date birthday) {
         this.birthday = birthday;
     }
 
+    @Override
     public void setBirthday(Date birthday) {
         changeBirthday(birthday);
     }
 
-
+    @Override
     public Integer getAge() {
         return age;
     }
 
+    @Override
     public void changeAge(Integer age) {
         this.age = age;
     }
 
+    @Override
     public void setAge(Integer age) {
         changeAge(age);
     }
 
     @Override
-    public void callTheCat(Cat cat) {
+    public void callTheCat(@NotNull Cat cat) {
         cat.callTheCat();
     }
 
     @Override
-    public void petTheCat(Cat cat) {
+    public void petTheCat(@NotNull Cat cat) {
         cat.petTheCat();
     }
 }
