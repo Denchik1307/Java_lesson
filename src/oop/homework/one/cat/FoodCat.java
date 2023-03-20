@@ -4,5 +4,4 @@ public interface FoodCat {
     void addFootToMisc();
     void byeFood(int cormPCS, int cormWeight);
 
-
 }
