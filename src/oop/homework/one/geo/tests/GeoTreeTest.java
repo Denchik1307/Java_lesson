@@ -1,17 +1,15 @@
 package oop.homework.one.geo.tests;
 
-import oop.homework.one.geo.GeoTree;
+import oop.homework.one.geo.GeoTreeImpl;
 import oop.homework.one.geo.Person;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class GeoTreeTest {
 
     private final Person testNaneOne = new Person("Alex");
     private final Person getTestNaneTwo = new Person("Masha");
 
-    GeoTree geo = new GeoTree();
+    GeoTreeImpl geo = new GeoTreeImpl();
 
     @Test
     void appendMarried() {

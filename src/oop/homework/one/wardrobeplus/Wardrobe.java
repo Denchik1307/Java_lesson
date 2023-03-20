@@ -1,8 +1,6 @@
 package oop.homework.one.wardrobeplus;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Objects;
 
 public class Wardrobe {
 

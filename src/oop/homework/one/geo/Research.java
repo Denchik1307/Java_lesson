@@ -6,8 +6,12 @@ public class Research {
     //    private final ArrayList<String> result = new ArrayList<>();
     private final ArrayList<Link> tree;
 
-    public Research(GeoTree geoTree) {
-        tree = geoTree.getTree();
+    private Research(GeoTree geoTree) {
+        this.tree = geoTree.getTree();
+    }
+
+    public static Research createResearch(GeoTree geoTree) {
+        return new Research(geoTree);
     }
 
     public String spend(Person personForSpend, Relationship relationship) {
@@ -18,7 +22,7 @@ public class Research {
             }
         }
         if (result.length() < 1) {
-            result.append("For ").append(personForSpend).append("").append(relationship)
+            result.append("For ").append(personForSpend).append(" ").append(relationship)
                     .append(" not found");
         }
         return result.toString();
