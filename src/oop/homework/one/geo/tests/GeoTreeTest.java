@@ -2,12 +2,13 @@ package oop.homework.one.geo.tests;
 
 import oop.homework.one.geo.GeoTreeImpl;
 import oop.homework.one.geo.Person;
+import oop.homework.one.geo.PersonImpl;
 import org.junit.jupiter.api.Test;
 
 class GeoTreeTest {
 
-    private final Person testNaneOne = new Person("Alex");
-    private final Person getTestNaneTwo = new Person("Masha");
+    private final Person testNameOne = new PersonImpl("Alex");
+    private final Person getTestNameTwo = new PersonImpl("Masha");
 
     GeoTreeImpl geo = new GeoTreeImpl();
 
