@@ -9,9 +9,9 @@ public class Main {
         Person natasha = new PersonImpl("Наташа");
         Person katy = new PersonImpl("Катя");
         GeoTree geoTreeIrina = new GeoTreeImpl();
-        geoTreeIrina.appendPartner(irina, vasya);
-        geoTreeIrina.appendChildren(irina, jane);
-        geoTreeIrina.appendChildren(irina, natasha);
+        geoTreeIrina.appendLink(irina,Relationship.partner, vasya);
+        geoTreeIrina.appendLink(irina,Relationship.children, jane);
+        geoTreeIrina.appendLink(irina,Relationship.children, natasha);
 
         System.out.println(Research.createResearch(geoTreeIrina).spend(irina));
         System.out.println(Research.createResearch(geoTreeIrina).spend(irina,Relationship.children));
