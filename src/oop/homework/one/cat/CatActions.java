@@ -4,4 +4,5 @@ public interface CatActions extends Actions {
 
     void callTheCat();
     void petTheCat();
+    void cuddleHuman(Human human);
 }

@@ -2,7 +2,7 @@ package oop.homework.one.cat;
 
 import java.util.Date;
 
-public interface Human extends Actions {
+public interface Human extends HumanActions {
     String getName();
 
     void changeName(String name);
@@ -18,4 +18,6 @@ public interface Human extends Actions {
     void changeAge(Integer age);
 
     void setAge(Integer age);
+
+
 }

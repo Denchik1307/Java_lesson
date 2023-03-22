@@ -3,7 +3,7 @@ package oop.homework.one.geo;
 import java.util.Date;
 
 public class PersonImpl implements Person{
-    private final Date EMPTY = null;
+    private final Date EMPTY = new  Date(0,0,0);
     private String firstName;
     private String lastName;
     private Date birthday;

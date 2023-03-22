@@ -1,8 +1,9 @@
 package oop.homework.one.cat;
 
 import java.util.Date;
+import java.util.Random;
 
-public class HumanImpl implements Human, Actions {
+public class HumanImpl implements Human {
     public HumanImpl(String name, Integer age) {
         this.name = name;
         this.age = age;
@@ -69,16 +70,39 @@ public class HumanImpl implements Human, Actions {
 
     @Override
     public void voice() {
-
-    }
-
-    @Override
-    public void eat() {
-
+        System.out.println("I`m say");
     }
 
     @Override
     public void sleep() {
+        System.out.println("Sleeping");
+    }
 
+    @Override
+    public void walk() {
+        System.out.println("Walking");
+    }
+
+    @Override
+    public void eat() {
+        System.out.println("Eating");
+    }
+
+    @Override
+    public void callTheCat(Cat cat) {
+        cat.callTheCat();
+    }
+
+    @Override
+    public void petTheCat(Cat cat) {
+        cat.petTheCat();
+    }
+
+    @Override
+    public void answerForCat() {
+        Random rand = new Random();
+        boolean tmp = rand.nextInt(0, 100)%2 == 0;
+        System.out.println(tmp ? "Хочешь кушать?" : "Погладить?");
+        ;
     }
 }

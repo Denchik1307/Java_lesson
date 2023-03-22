@@ -1,5 +1,7 @@
 package oop.homework.one.cat;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -17,6 +19,11 @@ public class CatImpl implements Cat {
 
     public void changeName(String newName) {
         this.name = newName;
+    }
+
+    @Override
+    public void cuddleHuman(@NotNull Human human) {
+        human.answerForCat();
     }
 
     public void callTheCat() {
@@ -51,4 +58,10 @@ public class CatImpl implements Cat {
     public void walk() {
         System.out.println("The cat walking");
     }
+
+    @Override
+    public void eat() {
+        System.out.println("The cat eating");
+    }
+
 }
