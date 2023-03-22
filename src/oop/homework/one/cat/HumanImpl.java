@@ -1,10 +1,8 @@
 package oop.homework.one.cat;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.Date;
 
-public class HumanImpl implements Human, InteractionWithTheCat {
+public class HumanImpl implements Human, Actions {
     public HumanImpl(String name, Integer age) {
         this.name = name;
         this.age = age;
@@ -70,12 +68,17 @@ public class HumanImpl implements Human, InteractionWithTheCat {
     }
 
     @Override
-    public void callTheCat(@NotNull Cat cat) {
-        cat.callTheCat();
+    public void voice() {
+
     }
 
     @Override
-    public void petTheCat(@NotNull Cat cat) {
-        cat.petTheCat();
+    public void eat() {
+
+    }
+
+    @Override
+    public void sleep() {
+
     }
 }

@@ -1,12 +1,14 @@
 package oop.homework.one.geo;
 
+import java.util.Date;
+
 public class PersonImpl implements Person{
-    private final String EMPTY = "Empty";
+    private final Date EMPTY = null;
     private String firstName;
     private String lastName;
-    private String birthday;
+    private Date birthday;
 
-    public PersonImpl(String firstName,String lastName, String birthday) {
+    public PersonImpl(String firstName,String lastName, Date birthday) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthday = birthday;
@@ -26,7 +28,7 @@ public class PersonImpl implements Person{
     public void changeFirstName(String newFirstName) {
         this.firstName = newFirstName;
     }
-    public String getFullName() {
+    public String getFirstName() {
         return firstName;
     }
     public void changLastName(String newLastName) {
@@ -37,11 +39,11 @@ public class PersonImpl implements Person{
         return this.lastName;
     }
 
-    public String getBirthday() {
-        return (this.birthday.equals(EMPTY)) ? EMPTY: this.birthday;
+    public Date getBirthday() {
+        return this.birthday;
     }
 
-    public void setOrChangeBirthday(String birthday) {
+    public void setOrChangeBirthday(Date birthday) {
         this.birthday = birthday;
     }
 

@@ -1,9 +1,12 @@
 package oop.homework.one.geo;
 
+import java.util.Date;
+
 public interface Person {
+    String getFirstName();
     void changeFirstName(String newFirstName);
-    void changLastName(String newLastName);
     String getLastName();
-    String getBirthday();
-    void setOrChangeBirthday(String birthday);
+    void changLastName(String newLastName);
+    Date getBirthday();
+    void setOrChangeBirthday(Date birthday);
 }
