@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 public class GeoTreeImpl implements GeoTree {
     private final ArrayList<Link> tree = new ArrayList<>();
-
     public ArrayList<Link> getTree() {
         return this.tree;
     }
